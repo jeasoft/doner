@@ -28,6 +28,7 @@ class Project(models.Model):
     name = models.CharField(verbose_name=_('Name'), max_length=50)
     description = models.CharField(verbose_name=_('Description'), max_length=250, blank=True)
     is_private = models.BooleanField(verbose_name=_('Private'), default=False)
+    created_date = models.DateTimeField(verbose_name=_('Created date'), auto_now_add=True)
     last_active = models.DateTimeField(auto_now_add=True)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='project_members')
     members_number = models.IntegerField(default=0)
@@ -43,6 +44,7 @@ class Project(models.Model):
 class Attachment(models.Model):
 
     attachment = models.FileField(upload_to='attachments/', help_text='(optional)')
+    created_date = models.DateTimeField(verbose_name=_('Created date'), auto_now_add=True)
 
     class Meta:
         verbose_name = _('Attachment')
