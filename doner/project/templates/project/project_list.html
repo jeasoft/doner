@@ -1,0 +1,21 @@
+{% extends "layouts/alpha.html" %}
+
+{% block content %}
+    <h2>Public projects</h2>
+    <ul>
+    {% for project in object_list %}
+        {% if not project.is_private %}
+            <li>{{ project }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+
+    <h2>Private projects</h2>
+    <ul>
+    {% for project in object_list %}
+        {% if project.is_private %}
+            <li>{{ project }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock %}

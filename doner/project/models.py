@@ -32,10 +32,26 @@ class Project(models.Model):
     last_active = models.DateTimeField(auto_now_add=True)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='project_members')
     members_number = models.IntegerField(default=0)
+    have_milestones = models.BooleanField(default=False, editable=False)
 
     class Meta:
         verbose_name = _('Project')
         verbose_name_plural = _('Projects')
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
+
+class Milestone(models.Model):
+
+    project = models.ForeignKey(Project, verbose_name=_('Project'))
+    name = models.CharField(verbose_name=_('Name'), max_length=50)
+    description = models.TextField(verbose_name=_('Description'), blank=True)
+    deadline = models.DateTimeField(verbose_name=_('Deadline'))
+
+    class Meta:
+        verbose_name = _('Milestone')
+        verbose_name_plural = _('Milestones')
 
     def __unicode__(self):
         return u'%s' % self.name
@@ -57,6 +73,7 @@ class Attachment(models.Model):
 class Ticket(models.Model):
 
     project = models.ForeignKey(Project, verbose_name=_('Project'))
+    milestone = models.ForeignKey(Milestone, verbose_name=_('Milestone'), null=True, blank=True)
     title = models.CharField(verbose_name=_('Title'), max_length=100)
     description = models.TextField(verbose_name=_('Description'), blank=True)
     submitted_date = models.DateTimeField(verbose_name=_('Submited date'), auto_now_add=True)
