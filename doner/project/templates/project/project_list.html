@@ -1,21 +1,26 @@
 {% extends "layouts/alpha.html" %}
+{% load i18n %}
 
 {% block content %}
-    <h2>Public projects</h2>
-    <ul>
+    <h2>{% trans "Project list" %}</h2>
     {% for project in object_list %}
-        {% if not project.is_private %}
-            <li>{{ project }}</li>
-        {% endif %}
+        <div class="uk-panel uk-panel-box">
+            {% if project.is_private %}
+                <div class="uk-panel-badge uk-badge">{% trans "private" %}</div>
+            {% endif %}
+            <div class="uk-grid">
+                <div class="uk-width-6-10">
+                    <h3 class="uk-panel-title"><a href="{{ project.get_absolute_url }}">{{ project }}</a></h3>
+                    {% if project.description %}
+                        <p>{{ project.description }}</p>
+                    {% endif %}
+                </div>
+                <div class="uk-width-4-10">
+                    {% trans "Last active" %}: {{ project.last_active }}<br>
+                    {% trans "Members" %}: {{ project.members_number }}
+                </div>
+            </div>
+        </div>
+        <br>
     {% endfor %}
-    </ul>
-
-    <h2>Private projects</h2>
-    <ul>
-    {% for project in object_list %}
-        {% if project.is_private %}
-            <li>{{ project }}</li>
-        {% endif %}
-    {% endfor %}
-    </ul>
 {% endblock %}

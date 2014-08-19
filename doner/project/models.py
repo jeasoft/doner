@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 from django.conf import settings
 
 
 STATUS_CODES = (
     (1, _('Open')),
-    (2, _('Working')),
+    (2, _('In progress')),
     (3, _('Closed')),
 )
 
@@ -37,9 +38,13 @@ class Project(models.Model):
     class Meta:
         verbose_name = _('Project')
         verbose_name_plural = _('Projects')
+        ordering = ('name',)
 
     def __unicode__(self):
         return u'%s' % self.name
+
+    def get_absolute_url(self):
+        return reverse('project', kwargs={'pk': self.pk})
 
 
 class Milestone(models.Model):
@@ -91,6 +96,10 @@ class Ticket(models.Model):
     class Meta:
         verbose_name = _('Ticket')
         verbose_name_plural = _('Tickets')
+        ordering = ('priority', 'title')
 
     def __unicode__(self):
         return u'%s' % self.title
+
+    def get_absolute_url(self):
+        return reverse('ticket', kwargs={'pk': self.pk})

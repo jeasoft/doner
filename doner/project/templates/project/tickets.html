@@ -1,0 +1,50 @@
+{% extends "layouts/alpha.html" %}
+{% load i18n %}
+
+{% block css %}
+    <style>
+     .priority-1 { color: #D50D0D; }
+     .priority-3 { color: #217521; }
+    </style>
+{% endblock %}
+
+{% block breadcrumb %}
+<ul class="uk-breadcrumb">
+    <li><a href="/">{% trans "Projects" %}</a></li>
+    <li class="uk-active"><span>{{ project }}</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ project }}</h1>
+
+    <ul class="uk-subnav uk-subnav-pill">
+        <li{% if not filter %} class="uk-active"{% endif %}><a href="{{ project.get_absolute_url }}">{% trans "todo" %}</a></li>
+        <li{% if filter %} class="uk-active"{% endif %}><a href="?filter=closed">{% trans "closed" %}</a></li>
+    </ul>
+
+    <table class="uk-table uk-table-striped">
+        <thead>
+            <th style="width:50px"><a href="{{ project.get_absolute_url }}">Id</a></th>
+            <th><a href="?order=title">{% trans "Title" %}</a></th>
+            <th style="width:90px"><a href="?order=status">{% trans "Status" %}</a></th>
+            <th style="width:90px"><a href="?order=ttype">{% trans "Type" %}</a></th>
+            <th style="width:100px"><a href="?order=submitted_date">{% trans "Submit date" %}</a></th>
+            <th style="width:100px"><a href="?order=modified_date">{% trans "Last update" %}</a></th>
+        </thead>
+        <tbody>
+            {% for ticket in object_list %}
+            <tr class="priority-{{ ticket.priority }}">
+                <td>
+                    <a href="{{ ticket.get_absolute_url }}">#{{ ticket.id }}</a>
+                </td>
+                <td>{{ ticket.title }}</td>
+                <td>{{ ticket.get_status_display }}</td>
+                <td>{{ ticket.get_ttype_display }}</td>
+                <td>{{ ticket.submitted_date|date:'SHORT_DATE_FORMAT' }}</td>
+                <td>{{ ticket.modified_date|date:'SHORT_DATE_FORMAT' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

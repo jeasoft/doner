@@ -1,0 +1,48 @@
+{% extends "layouts/alpha.html" %}
+{% load i18n %}
+
+{% block breadcrumb %}
+<ul class="uk-breadcrumb">
+    <li><a href="/">{% trans "Projects" %}</a></li>
+    <li><a href="{{ object.project.get_absolute_url }}">{{ object.project }}</a></li>
+    <li class="uk-active"><span>{% trans "Ticket" %} #{{ object.id }}</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+
+    <table class="uk-table">
+        <tr>
+            <th>{% trans "Status" %}</th>
+            <td>{{ object.get_status_display }}</td>
+            <th>{% trans "Submited date" %}</th>
+            <td>{{ object.submitted_date }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Priority" %}</th>
+            <td>{{ object.get_priority_display }}</td>
+            <th>{% trans "Last update" %}</th>
+            <td>{{ object.modified_date }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Ticket type" %}</th>
+            <td>{{ object.get_ttype_display }}</td>
+            <th>{% trans "Submitter" %}</th>
+            <td>{{ object.submitter }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Milestone" %}</th>
+            <td>{{ object.milestone }}</td>
+            <th>{% trans "Assigned to"|default:"-" %}</th>
+            <td>{{ object.assigned_to|default:"-" }}</td>
+        </tr>
+    </table>
+
+    {% if object.description %}
+    <h3>{% trans "Description" %}</h3>
+    <p>
+        {{ object.description|linebreaksbr }}
+    </p>
+    {% endif %}
+{% endblock %}
