@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block body %}
+    <div class="uk-vertical-align uk-text-center uk-height-1-1">
+        <div class="uk-vertical-align-middle" style="width: 250px;">
+
+            <i class="uk-icon-key uk-icon-large"></i><br><br>
+
+            <form action="" method="POST" class="uk-panel uk-panel-box uk-form">
+                {% csrf_token %}
+                <div class="uk-form-row">
+                    <input class="uk-width-1-1 uk-form-large" type="text" name="username" placeholder="{% trans "Username" %}">
+                </div>
+                <div class="uk-form-row">
+                    <input class="uk-width-1-1 uk-form-large" type="password" name="password" placeholder="{% trans "Password" %}">
+                </div>
+                <div class="uk-form-row">
+                    <input type="submit" class="uk-width-1-1 uk-button uk-button-primary uk-button-large" value="{% trans "Login" %}">
+                </div>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

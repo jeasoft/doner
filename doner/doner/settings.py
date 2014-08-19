@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -49,7 +51,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+
 ROOT_URLCONF = 'doner.urls'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'doner.wsgi.application'
 
