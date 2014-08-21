@@ -9,6 +9,10 @@
 </ul>
 {% endblock %}
 
+{% block nav %}
+    <li><a href="{% url 'ticket-edit' object.id %}" class="uk-button"><i class="uk-icon-pencil"></i> {% trans "Edit ticket" %}</a></li>
+{% endblock %}
+
 {% block content %}
     <h1>{{ object.title }}</h1>
 
@@ -33,8 +37,8 @@
         </tr>
         <tr>
             <th>{% trans "Milestone" %}</th>
-            <td>{{ object.milestone }}</td>
-            <th>{% trans "Assigned to"|default:"-" %}</th>
+            <td>{{ object.milestone|default:"-" }}</td>
+            <th>{% trans "Assigned to" %}</th>
             <td>{{ object.assigned_to|default:"-" }}</td>
         </tr>
     </table>

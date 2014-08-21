@@ -8,6 +8,13 @@
     </style>
 {% endblock %}
 
+{% block nav %}
+    <li><a href="{% url 'ticket-create' project.id %}" class="uk-button"><i class="uk-icon-plus"></i> {% trans "Create ticket" %}</a></li>
+    {% if user.is_superuser %}
+        {# TODO: EDIT PROJECT #}
+    {% endif %}
+{% endblock %}
+
 {% block breadcrumb %}
 <ul class="uk-breadcrumb">
     <li><a href="/">{% trans "Projects" %}</a></li>

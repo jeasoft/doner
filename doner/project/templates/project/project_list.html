@@ -1,8 +1,15 @@
 {% extends "layouts/alpha.html" %}
 {% load i18n %}
 
+{% if user.is_superuser %}
+    {% block nav %}
+        <li><a href="{% url 'project-create' %}" class="uk-button"><i class="uk-icon-plus"></i> {% trans "Create project" %}</a></li>
+    {% endblock %}
+{% endif %}
+
 {% block content %}
     <h2>{% trans "Project list" %}</h2>
+
     {% for project in object_list %}
         <div class="uk-panel uk-panel-box">
             {% if project.is_private %}

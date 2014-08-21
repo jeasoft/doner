@@ -1,0 +1,14 @@
+{% extends "layouts/alpha.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Create project" %}</h2>
+
+    <form action="" method="post" class="uk-form">
+        {% csrf_token %}
+        <table class="uk-table">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Create" class="uk-button uk-button-primary" />
+    </form>
+{% endblock %}

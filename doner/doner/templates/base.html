@@ -19,6 +19,7 @@
             <a href="/" class="uk-navbar-brand">doner</a>
             <ul class="uk-navbar-nav">
                 <li><a href="{% url 'projects' %}">{% trans "Projects" %}</a></li>
+                {% block nav %}{% endblock %}
             </ul>
             <div class="uk-navbar-flip">
                 <ul class="uk-navbar-nav">
