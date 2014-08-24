@@ -15,6 +15,8 @@ setup(
     packages=['doner'],
     install_requires=[
         "Django == 1.6.5",
-        "django-gravatar2==1.1.4"
+        "django-gravatar2==1.1.4",
+        "django-markup==0.4",
+        "Markdown==2.4.1",
     ],
 )
