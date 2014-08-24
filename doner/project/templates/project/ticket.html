@@ -68,8 +68,11 @@
                         {{ log.description|linebreaksbr }}
                     {% else %}
                         {{ log.description|urlize|linebreaksbr }}
+                        <br><br>
                     {% endif %}
-                    <div class="uk-text-small uk-text-muted">{{ log.submitted_date }}</div>
+                    <div class="uk-text-small uk-text-muted">
+                        {{ log.author }} &bull; {{ log.submitted_date }}
+                    </div>
                 </div>
             </div>
             {% if not forloop.last %}

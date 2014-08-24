@@ -54,3 +54,4 @@ docs/_build/
 
 db.sqlite3
 doner/doner/settings_local.py
+doner/doner/management/

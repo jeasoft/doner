@@ -23,7 +23,7 @@
                     {% endif %}
                 </div>
                 <div class="uk-width-4-10">
-                    {% trans "Last active" %}: {{ project.last_active }}<br>
+                    {% trans "Last active" %}: {{ project.last_active|date:'SHORT_DATETIME_FORMAT' }}<br>
                     {% trans "Members" %}: {{ project.members_number }}
                 </div>
             </div>
