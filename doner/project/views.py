@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
+
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
+from django.utils.translation import ugettext as _
 
 from .access_control_views import SuperUserView, ProjectView, MembersOnlyView
-from .models import Project, Ticket
+from .models import Project, Ticket, Log
 
 
 class ProjectList(ListView):
@@ -85,3 +88,69 @@ class TicketCreate(TicketForm, MembersOnlyView, CreateView):
 class TicketEdit(TicketForm, MembersOnlyView, UpdateView):
 
     url_pk_related_model = Ticket
+
+    def form_valid(self, form):
+        '''
+        Adding event to ticket log.
+        '''
+        CHOICES_FIELDS = ['status', 'priority', 'ttype']
+        TEXT_FIELDS = ['description']
+        FOREIGN_KEY_FIELDS = ['assigned_to']
+
+        if form.changed_data:
+            lines = []
+            for field_name in form.changed_data:
+                form_field = form.fields[field_name]
+                field_initial = form.initial[field_name]
+                field_current = form.data[field_name]
+                if field_name in CHOICES_FIELDS:
+                    # getting display values
+                    choices = dict(form_field.choices)
+                    initial_value = choices[int(field_initial)].title()
+                    current_value = choices[int(field_current)].title()
+                elif field_name in TEXT_FIELDS:
+                    # no tracking details of content changes
+                    initial_value = _('updated')
+                    current_value = ''
+                elif field_name in FOREIGN_KEY_FIELDS:
+                    # foreign key values
+                    choices = dict(form_field.choices)
+                    initial_value = choices[int(field_initial)] if field_initial else u'—'
+                    current_value = choices[int(field_current)] if field_current else u'—'
+                else:
+                    # raw values
+                    initial_value = field_initial
+                    current_value = field_initial
+
+                if current_value:
+                    current_value = u' ⇒ %s' % current_value
+                lines.append(u'{0}: {1}{2}'.format(
+                    form_field.label.title(),
+                    initial_value,
+                    current_value
+                ))
+            form.instance.log_set.create(
+                author=self.request.user,
+                description='\n'.join(lines)
+            )
+        return super(TicketEdit, self).form_valid(form)
+
+
+class CommentAdd(MembersOnlyView, CreateView):
+
+    model = Log
+    url_pk_related_model = Ticket
+    fields = ['description']
+
+    def form_valid(self, form):
+        '''
+        Setting ticket and submitter fields before saving the form.
+        '''
+        self.ticket = Ticket.objects.get(pk=self.kwargs['pk'])
+        form.instance.ticket = self.ticket
+        form.instance.author = self.request.user
+        form.instance.ltype = 2
+        return super(CommentAdd, self).form_valid(form)
+
+    def get_success_url(self):
+        return self.ticket.get_absolute_url()

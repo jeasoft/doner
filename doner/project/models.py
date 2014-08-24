@@ -23,6 +23,11 @@ TICKET_TYPES = (
     (4, _('Research')),
 )
 
+LOG_TYPES = (
+    (1, _('Update')),
+    (2, _('Comments')),
+)
+
 
 class Project(models.Model):
 
@@ -103,3 +108,19 @@ class Ticket(models.Model):
 
     def get_absolute_url(self):
         return reverse('ticket', kwargs={'pk': self.pk})
+
+
+class Log(models.Model):
+
+    ticket = models.ForeignKey(Ticket)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Author'), related_name='author')
+    ltype = models.IntegerField(verbose_name=_('Log type'), default=1, choices=LOG_TYPES)
+    description = models.TextField(verbose_name=_('Description'), blank=True)
+
+    submitted_date = models.DateTimeField(verbose_name=_('Submited date'), auto_now_add=True)
+    modified_date = models.DateTimeField(verbose_name=_('Modified date'), auto_now=True)
+
+    class Meta:
+        verbose_name = _('Log')
+        verbose_name_plural = _('Logs')
+        ordering = ('id',)

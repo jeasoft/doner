@@ -1,5 +1,6 @@
 {% extends "layouts/alpha.html" %}
 {% load i18n %}
+{% load gravatar %}
 
 {% block breadcrumb %}
 <ul class="uk-breadcrumb">
@@ -44,9 +45,54 @@
     </table>
 
     {% if object.description %}
-    <h3>{% trans "Description" %}</h3>
+    <h2>{% trans "Description" %}</h2>
     <p>
-        {{ object.description|linebreaksbr }}
+        {{ object.description|urlize|linebreaksbr }}
     </p>
+    {% endif %}
+
+    {% if object.log_set.exists %}
+        <h2>{% trans "Log" %}</h2>
+
+        {% for log in object.log_set.all %}
+            <div class="uk-grid">
+                <div class="uk-width-1-10">
+                    {% if log.ltype == 1 %}
+                        <img src="{% gravatar_url log.author.email 40 %}" class="uk-border-circle" alt="avatar">
+                    {% else %}
+                        <img src="{% gravatar_url log.author.email 80 %}" class="uk-border-circle" alt="avatar">
+                    {% endif %}
+                </div>
+                <div class="uk-width-9-10">
+                    {% if log.ltype == 1 %}
+                        {{ log.description|linebreaksbr }}
+                    {% else %}
+                        {{ log.description|urlize|linebreaksbr }}
+                    {% endif %}
+                    <div class="uk-text-small uk-text-muted">{{ log.submitted_date }}</div>
+                </div>
+            </div>
+            {% if not forloop.last %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <h2>{% trans "Add comment" %}</h2>
+        <form action="{% url 'ticket-add-comment' object.id %}" method="POST" class="uk-form">
+            {% csrf_token %}
+            <div class="uk-grid">
+                <div class="uk-width-1-10">
+                    <img src="{% gravatar_url user.email 80 %}" class="uk-border-circle" alt="avatar">
+                </div>
+                <div class="uk-width-7-10">
+                    <textarea name="description" rows="5" class="uk-width-1-1" placeholder="{% trans "Enter your comment" %}"></textarea>
+                </div>
+                <div class="uk-width-2-10">
+                    <input type="submit" class="uk-button uk-button-success uk-width-1-1" name="add" value="{% trans "Add comment" %}">
+                </div>
+            </div>
+        </form>
     {% endif %}
 {% endblock %}

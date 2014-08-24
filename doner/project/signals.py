@@ -1,10 +1,12 @@
 from datetime import datetime
 
+from django.dispatch import receiver
 from django.db.models.signals import m2m_changed, post_save, post_delete
 
 from .models import Project, Milestone, Ticket
 
 
+@receiver(m2m_changed, sender=Project.members.through)
 def count_project_members(sender, instance, **kwargs):
     '''
     Count members after member add/remove.
@@ -12,9 +14,8 @@ def count_project_members(sender, instance, **kwargs):
     instance.members_number = instance.members.count()
     instance.save()
 
-m2m_changed.connect(count_project_members, sender=Project.members.through)
 
-
+@receiver(post_save, sender=Milestone)
 def set_have_milestones_if_first(sender, instance, created, **kwargs):
     '''
     If the first milestone is created set the project's milestone flag on True.
@@ -23,9 +24,8 @@ def set_have_milestones_if_first(sender, instance, created, **kwargs):
         instance.project.have_milestones = True
         instance.project.save()
 
-post_save.connect(set_have_milestones_if_first, sender=Milestone)
 
-
+@receiver(post_delete, sender=Milestone)
 def set_have_milestones_if_last(sender, instance, **kwargs):
     '''
     If the last milestone is removed set the project's milestone flag on False.
@@ -34,16 +34,12 @@ def set_have_milestones_if_last(sender, instance, **kwargs):
         instance.project.have_milestones = False
         instance.project.save()
 
-post_delete.connect(set_have_milestones_if_last, sender=Milestone)
 
-
+@receiver(post_save, sender=Ticket)
+@receiver(post_delete, sender=Ticket)
 def update_project_last_active(sender, instance, **kwargs):
     '''
     If the first milestone is created set the project's milestone flag on True.
     '''
     instance.project.last_active = datetime.now()
-    print('new last_active')
     instance.project.save()
-
-post_save.connect(update_project_last_active, sender=Ticket)
-post_delete.connect(update_project_last_active, sender=Ticket)

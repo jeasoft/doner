@@ -3,7 +3,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from django.shortcuts import render
 
-from .models import Project, Ticket
+from .models import Project, Ticket, Log
 
 
 class LoginRequiredView(View):
@@ -40,7 +40,6 @@ class ProjectReletedView(View):
         Based on self.url_pk_related_model get project instance and set it as self.project.
         '''
         if self.project:
-            print '>>> already available'
             # project is already available
             return
 
@@ -50,6 +49,8 @@ class ProjectReletedView(View):
             self.project = model_instance
         elif isinstance(model_instance, Ticket):
             self.project = model_instance.project
+        elif isinstance(model_instance, Log):
+            self.project = model_instance.ticket.project
         else:
             raise ValueError
 
