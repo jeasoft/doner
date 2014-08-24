@@ -120,7 +120,7 @@ class TicketEdit(TicketForm, MembersOnlyView, UpdateView):
                 else:
                     # raw values
                     initial_value = field_initial
-                    current_value = field_initial
+                    current_value = field_current
 
                 if current_value:
                     current_value = u' ⇒ %s' % current_value
