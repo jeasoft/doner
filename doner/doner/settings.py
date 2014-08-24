@@ -18,9 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7j#9x!%k^a@^ute@5^dn0wuth50bq(z@999^b#4h5(4tx+xvsi'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -63,16 +60,6 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'doner.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -93,3 +80,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAVATAR_DEFAULT_IMAGE = 'retro'
+
+# include local settings
+local_settings_file_in_project = os.path.join(BASE_DIR, 'doner', 'settings_local.py')
+if os.path.isfile(local_settings_file_in_project):
+    execfile(local_settings_file_in_project)
