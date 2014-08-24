@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-24 17:19+0200\n"
+"POT-Creation-Date: 2014-08-24 19:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,9 @@ msgid "Access denied"
 msgstr "Brak dostępu"
 
 #: doner/templates/base.html:21 project/models.py:45
-#: project/templates/project/ticket.html:7
-#: project/templates/project/tickets.html:20
+#: project/templates/project/project-activity.html:6
+#: project/templates/project/ticket.html:8
+#: project/templates/project/tickets.html:21
 msgid "Projects"
 msgstr "Projekty"
 
@@ -98,7 +99,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 #: project/models.py:35 project/models.py:59 project/models.py:88
-#: project/models.py:118 project/templates/project/ticket.html:48
+#: project/models.py:118 project/templates/project/project-activity.html:43
+#: project/templates/project/ticket.html:49
 msgid "Description"
 msgstr "Opis"
 
@@ -119,7 +121,7 @@ msgid "Deadline"
 msgstr "Ostateczny termin"
 
 #: project/models.py:63 project/models.py:86
-#: project/templates/project/ticket.html:40
+#: project/templates/project/ticket.html:41
 msgid "Milestone"
 msgstr "Kamień milowy"
 
@@ -135,12 +137,13 @@ msgstr "Załącznik"
 msgid "Attachments"
 msgstr "Załączniki"
 
-#: project/models.py:87 project/templates/project/tickets.html:36
+#: project/models.py:87 project/templates/project/project-activity.html:21
+#: project/templates/project/tickets.html:37
 msgid "Title"
 msgstr "Tytuł"
 
 #: project/models.py:89 project/models.py:120
-#: project/templates/project/ticket.html:24
+#: project/templates/project/ticket.html:25
 msgid "Submited date"
 msgstr "Data dodania"
 
@@ -148,28 +151,28 @@ msgstr "Data dodania"
 msgid "Modified date"
 msgstr "Data edycji"
 
-#: project/models.py:92 project/templates/project/ticket.html:36
+#: project/models.py:92 project/templates/project/ticket.html:37
 msgid "Submitter"
 msgstr "Dodane przez"
 
-#: project/models.py:93 project/templates/project/ticket.html:42
+#: project/models.py:93 project/templates/project/ticket.html:43
 msgid "Assigned to"
 msgstr "Przypisane do"
 
-#: project/models.py:95 project/templates/project/ticket.html:22
-#: project/templates/project/tickets.html:37
+#: project/models.py:95 project/templates/project/ticket.html:23
+#: project/templates/project/tickets.html:38
 msgid "Status"
 msgstr "Status"
 
-#: project/models.py:96 project/templates/project/ticket.html:28
+#: project/models.py:96 project/templates/project/ticket.html:29
 msgid "Priority"
 msgstr "Priorytet"
 
-#: project/models.py:97 project/templates/project/ticket.html:34
+#: project/models.py:97 project/templates/project/ticket.html:35
 msgid "Ticket type"
 msgstr "Typ zadania"
 
-#: project/models.py:102 project/templates/project/ticket.html:9
+#: project/models.py:102 project/templates/project/ticket.html:10
 msgid "Ticket"
 msgstr "Zadanie"
 
@@ -177,7 +180,7 @@ msgstr "Zadanie"
 msgid "Tickets"
 msgstr "Zadania"
 
-#: project/models.py:116
+#: project/models.py:116 project/templates/project/project-activity.html:42
 msgid "Author"
 msgstr "Autor"
 
@@ -185,7 +188,7 @@ msgstr "Autor"
 msgid "Log type"
 msgstr "Typ zdarzenia"
 
-#: project/models.py:124 project/templates/project/ticket.html:55
+#: project/models.py:124 project/templates/project/ticket.html:56
 msgid "Log"
 msgstr "Historia"
 
@@ -193,7 +196,7 @@ msgstr "Historia"
 msgid "Logs"
 msgstr "Historia"
 
-#: project/views.py:113
+#: project/views.py:125
 msgid "updated"
 msgstr "zaktualizowano"
 
@@ -204,10 +207,32 @@ msgstr "Edytuj komentarz"
 
 #: project/templates/project/log_form.html:8
 #: project/templates/project/log_form.html:19
-#: project/templates/project/ticket.html:82
-#: project/templates/project/ticket.html:93
+#: project/templates/project/ticket.html:85
+#: project/templates/project/ticket.html:96
 msgid "Add comment"
 msgstr "Dodaj komentarz"
+
+#: project/templates/project/project-activity.html:8
+msgid "Activity"
+msgstr "Aktywność"
+
+#: project/templates/project/project-activity.html:13
+#: project/templates/project/tickets.html:12
+msgid "Project activity"
+msgstr "Ostatnia aktywność"
+
+#: project/templates/project/project-activity.html:17
+msgid "New tickets"
+msgstr "Nowe zadania"
+
+#: project/templates/project/project-activity.html:22
+#: project/templates/project/tickets.html:40
+msgid "Submit date"
+msgstr "Data dodania"
+
+#: project/templates/project/project-activity.html:38
+msgid "Last actions"
+msgstr "Ostanie zmiany"
 
 #: project/templates/project/project_form.html:5
 #: project/templates/project/project_form.html:12
@@ -231,16 +256,16 @@ msgstr "Ostatnia aktywność"
 msgid "Members"
 msgstr "Członkowie"
 
-#: project/templates/project/ticket.html:14
+#: project/templates/project/ticket.html:15
 msgid "Edit ticket"
 msgstr "Edytuj zadanie"
 
-#: project/templates/project/ticket.html:30
-#: project/templates/project/tickets.html:40
+#: project/templates/project/ticket.html:31
+#: project/templates/project/tickets.html:41
 msgid "Last update"
 msgstr "Ostatnia aktualizacja"
 
-#: project/templates/project/ticket.html:90
+#: project/templates/project/ticket.html:93
 msgid "Enter your comment"
 msgstr "Wpisz swój komentarz"
 
@@ -251,22 +276,18 @@ msgstr "Edytuj zadanie"
 
 #: project/templates/project/ticket_form.html:8
 #: project/templates/project/ticket_form.html:19
-#: project/templates/project/tickets.html:12
+#: project/templates/project/tickets.html:13
 msgid "Create ticket"
 msgstr "Dodaj zadanie"
 
-#: project/templates/project/tickets.html:29
+#: project/templates/project/tickets.html:30
 msgid "todo"
 msgstr "do zrobienia"
 
-#: project/templates/project/tickets.html:30
+#: project/templates/project/tickets.html:31
 msgid "closed"
 msgstr "zamknięte"
 
-#: project/templates/project/tickets.html:38
+#: project/templates/project/tickets.html:39
 msgid "Type"
 msgstr "Typ"
-
-#: project/templates/project/tickets.html:39
-msgid "Submit date"
-msgstr "Data dodania"

@@ -1,0 +1,58 @@
+{% extends "layouts/alpha.html" %}
+{% load i18n %}
+
+{% block breadcrumb %}
+<ul class="uk-breadcrumb">
+    <li><a href="/">{% trans "Projects" %}</a></li>
+    <li><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></li>
+    <li class="uk-active"><span>{% trans "Activity" %}</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Project activity" %}</h1>
+    <div class="uk-grid">
+        <div class="uk-width-1-2">
+
+            <h2>{% trans "New tickets" %}</h2>
+            <table class="uk-table">
+                <thead>
+                    <th style="width:50px">Id</th>
+                    <th>{% trans "Title" %}</th>
+                    <th style="width:100px">{% trans "Submit date" %}</th>
+                </thead>
+                <tbody>
+                    {% for ticket in new_tickets %}
+                        <tr>
+                            <td><a href="{{ ticket.get_absolute_url }}">#{{ ticket.id }}</a></td>
+                            <td>{{ ticket.title }}</td>
+                            <td>{{ ticket.submitted_date|date:'SHORT_DATE_FORMAT' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="uk-width-1-2">
+
+            <h2>{% trans "Last actions" %}</h2>
+            <table class="uk-table">
+                <thead>
+                    <th style="width:50px">Id</th>
+                    <th>{% trans "Author" %}</th>
+                    <th>{% trans "Description" %}</th>
+                </thead>
+                <tbody>
+                    {% for log in last_log %}
+                        <tr>
+                            <td><a href="{{ log.ticket.get_absolute_url }}" title="{{ log.ticket }}">#{{ log.ticket.id }}</a></td>
+                            <td>{{ log.author }}</td>
+                            <td>{{ log.description|linebreaksbr }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

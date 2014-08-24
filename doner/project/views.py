@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.http import HttpResponseRedirect
-from django.views.generic.base import View
+from django.views.generic.base import View, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
@@ -20,6 +20,18 @@ class ProjectCreate(SuperUserView, CreateView):
 
     model = Project
     fields = ['name', 'description', 'is_private', 'members']
+
+
+class ProjectActivity(ProjectView, TemplateView):
+
+    template_name = "project/project-activity.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectActivity, self).get_context_data(**kwargs)
+        context['project'] = self.project
+        context['new_tickets'] = Ticket.objects.all().order_by('-id')[:10]
+        context['last_log'] = Log.objects.all().order_by('-id')[:10]
+        return context
 
 
 class Tickets(ProjectView, ListView):

@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block nav %}
+    <li><a href="{% url 'project-activity' project.id %}" class="uk-button"><i class="uk-icon-info"></i> {% trans "Project activity" %}</a></li>
     <li><a href="{% url 'ticket-create' project.id %}" class="uk-button"><i class="uk-icon-plus"></i> {% trans "Create ticket" %}</a></li>
     {% if user.is_superuser %}
         {# TODO: EDIT PROJECT #}
