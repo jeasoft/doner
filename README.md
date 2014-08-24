@@ -3,8 +3,8 @@ doner
 
 Ticket Management System for Getting Things Done™ (TMS4GTD)
 
-[<img src="http://i.imgur.com/WqtXNtbl.png" style="width:250px">](http://imgur.com/WqtXNtb)
-[<img src="http://i.imgur.com/bohNGBhl.png" style="width:250px">](http://imgur.com/bohNGBhl)
+[<img src="http://i.imgur.com/bohNGBhl.png" width="250">](http://imgur.com/bohNGBhl)
+[<img src="http://i.imgur.com/WqtXNtbl.png" width="250">](http://imgur.com/WqtXNtb)
 
 Installation
 ============
