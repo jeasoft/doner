@@ -3,6 +3,8 @@
 {% load gravatar %}
 {% load markup_tags %}
 
+{% block title %}#{{ object.id }} {{ object.title }} &laquo; {{ object.project }} &laquo; {% endblock %}
+
 {% block breadcrumb %}
 <ul class="uk-breadcrumb">
     <li><a href="/">{% trans "Projects" %}</a></li>

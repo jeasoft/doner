@@ -16,6 +16,20 @@ class LoginRequiredView(View):
         return super(LoginRequiredView, self).dispatch(*args, **kwargs)
 
 
+class UserPrivateView(View):
+    '''
+    This view can be visited only by single user (view owner).
+    '''
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+
+        if not self.request.user == self.get_object():
+            return render(self.request, 'access-denied.html')
+
+        return super(UserPrivateView, self).dispatch(*args, **kwargs)
+
+
 class SuperUserView(View):
     '''
     This view can be visited only by superusers.

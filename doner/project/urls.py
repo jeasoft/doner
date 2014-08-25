@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from .views import (
     ProjectList, Tickets, TicketDetails, ProjectCreate, TicketCreate,
-    TicketEdit, CommentAdd, ProjectActivity, ProjectEdit
+    TicketEdit, CommentAdd, ProjectActivity, ProjectEdit, UserEdit, UserDetails
 )
 
 
@@ -16,4 +16,6 @@ urlpatterns = patterns('project.views',
     url(r'^ticket/(?P<pk>\d+)/$', TicketDetails.as_view(), name='ticket'),
     url(r'^ticket/(?P<pk>\d+)/edit/$', TicketEdit.as_view(), name='ticket-edit'),
     url(r'^ticket/(?P<pk>\d+)/add-comment/$', CommentAdd.as_view(), name='ticket-add-comment'),
+    url(r'^users/(?P<slug>[\w-]+)/edit/$', UserEdit.as_view(), name='user-edit'),
+    url(r'^users/(?P<slug>[\w-]+)/$', UserDetails.as_view(), name='user'),
 )

@@ -36,7 +36,7 @@ class Project(models.Model):
     is_private = models.BooleanField(verbose_name=_('Private'), default=False)
     created_date = models.DateTimeField(verbose_name=_('Created date'), auto_now_add=True)
     last_active = models.DateTimeField(auto_now_add=True)
-    members = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='project_members')
+    members = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='projects')
     members_number = models.IntegerField(default=0, editable=False)
     have_milestones = models.BooleanField(default=False, editable=False)
 

@@ -1,6 +1,8 @@
 {% extends "layouts/alpha.html" %}
 {% load i18n %}
 
+{% block title %}{% trans "Activity" %} &laquo; {{ project.name }} &laquo; {% endblock %}
+
 {% block breadcrumb %}
 <ul class="uk-breadcrumb">
     <li><a href="/">{% trans "Projects" %}</a></li>

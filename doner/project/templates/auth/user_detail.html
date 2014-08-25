@@ -1,0 +1,37 @@
+{% extends "layouts/alpha.html" %}
+{% load i18n %}
+{% load gravatar %}
+
+{% block content %}
+    <div class="uk-grid">
+        <div class="uk-width-1-2">
+            <h2>{% trans "Codename" %}: {{ object }}</h2>
+        </div>
+        <div class="uk-width-1-2 uk-text-right">
+            {% if request.user == object %}
+                <a href="{% url 'user-edit' object.username %}" class="uk-button">{% trans "Change e-mail" %}</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-1-6">
+            <img src="{% gravatar_url object.email 150 %}" class="uk-border-circle" alt="avatar">
+        </div>
+        <div class="uk-width-5-6">
+            <h3>{% trans "Project list" %}</h3>
+            <dl class="uk-description-list-line">
+                {% for project in object.projects.all %}
+                    <dt>
+                        <a href="{{ project.get_absolute_url }}">{{ project }}</a>
+                        {% if project.is_private %}
+                            <div class="uk-badge">{% trans "private" %}</div>
+                        {% endif %}
+                    </dt>
+                    <dd>{{ project.description }}</dd>
+                {% empty %}
+                    <dt>{% trans "No projects for now." %}</dt>
+                {% endfor %}
+            </dl>
+        </div>
+    </div>
+{% endblock %}
