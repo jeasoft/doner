@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-24 19:34+0000\n"
+"POT-Creation-Date: 2014-08-25 19:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,7 @@ msgstr "Brak dostępu"
 
 #: doner/templates/base.html:21 project/models.py:45
 #: project/templates/project/project-activity.html:6
+#: project/templates/project/project_form.html:6
 #: project/templates/project/ticket.html:8
 #: project/templates/project/tickets.html:21
 msgid "Projects"
@@ -196,7 +197,7 @@ msgstr "Historia"
 msgid "Logs"
 msgstr "Historia"
 
-#: project/views.py:125
+#: project/views.py:131
 msgid "updated"
 msgstr "zaktualizowano"
 
@@ -217,7 +218,7 @@ msgid "Activity"
 msgstr "Aktywność"
 
 #: project/templates/project/project-activity.html:13
-#: project/templates/project/tickets.html:12
+#: project/templates/project/tickets.html:15
 msgid "Project activity"
 msgstr "Ostatnia aktywność"
 
@@ -234,8 +235,16 @@ msgstr "Data dodania"
 msgid "Last actions"
 msgstr "Ostanie zmiany"
 
-#: project/templates/project/project_form.html:5
-#: project/templates/project/project_form.html:12
+#: project/templates/project/project_form.html:9
+#: project/templates/project/project_form.html:18
+#: project/templates/project/project_form.html:29
+#: project/templates/project/tickets.html:13
+msgid "Update project"
+msgstr "Edytuj projekt"
+
+#: project/templates/project/project_form.html:11
+#: project/templates/project/project_form.html:20
+#: project/templates/project/project_form.html:31
 #: project/templates/project/project_list.html:6
 msgid "Create project"
 msgstr "Stwórz projekt"
@@ -257,7 +266,9 @@ msgid "Members"
 msgstr "Członkowie"
 
 #: project/templates/project/ticket.html:15
-msgid "Edit ticket"
+#: project/templates/project/ticket_form.html:6
+#: project/templates/project/ticket_form.html:17
+msgid "Update ticket"
 msgstr "Edytuj zadanie"
 
 #: project/templates/project/ticket.html:31
@@ -269,14 +280,9 @@ msgstr "Ostatnia aktualizacja"
 msgid "Enter your comment"
 msgstr "Wpisz swój komentarz"
 
-#: project/templates/project/ticket_form.html:6
-#: project/templates/project/ticket_form.html:17
-msgid "Update ticket"
-msgstr "Edytuj zadanie"
-
 #: project/templates/project/ticket_form.html:8
 #: project/templates/project/ticket_form.html:19
-#: project/templates/project/tickets.html:13
+#: project/templates/project/tickets.html:16
 msgid "Create ticket"
 msgstr "Dodaj zadanie"
 

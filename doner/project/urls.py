@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from .views import (
     ProjectList, Tickets, TicketDetails, ProjectCreate, TicketCreate,
-    TicketEdit, CommentAdd, ProjectActivity
+    TicketEdit, CommentAdd, ProjectActivity, ProjectEdit
 )
 
 
@@ -11,6 +11,7 @@ urlpatterns = patterns('project.views',
     url(r'^project/create/$', ProjectCreate.as_view(), name='project-create'),
     url(r'^project/(?P<pk>\d+)/$', Tickets.as_view(), name='project'),
     url(r'^project/(?P<pk>\d+)/create/$', TicketCreate.as_view(), name='ticket-create'),
+    url(r'^project/(?P<pk>\d+)/edit/$', ProjectEdit.as_view(), name='project-edit'),
     url(r'^project/(?P<pk>\d+)/activity/$', ProjectActivity.as_view(), name='project-activity'),
     url(r'^ticket/(?P<pk>\d+)/$', TicketDetails.as_view(), name='ticket'),
     url(r'^ticket/(?P<pk>\d+)/edit/$', TicketEdit.as_view(), name='ticket-edit'),

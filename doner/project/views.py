@@ -22,6 +22,12 @@ class ProjectCreate(SuperUserView, CreateView):
     fields = ['name', 'description', 'is_private', 'members']
 
 
+class ProjectEdit(SuperUserView, UpdateView):
+
+    model = Project
+    fields = ['name', 'description', 'is_private', 'members']
+
+
 class ProjectActivity(ProjectView, TemplateView):
 
     template_name = "project/project-activity.html"
