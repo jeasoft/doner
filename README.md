@@ -39,9 +39,15 @@ set new secret key ([secret key generator](http://www.miniwebtool.com/django-sec
 
     SECRET_KEY = 'SOME_NEW_SECRET_KEY'
 
-database settings ([see more](https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES))
+### Database settings
+Read more on [Django docs](https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES).
 
-    # PostgreSQL
+**PostgreSQL**
+
+    $ pip install psycopg2
+
+in `settings_local.py` file
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -52,6 +58,34 @@ database settings ([see more](https://docs.djangoproject.com/en/1.6/ref/settings
             'PORT': '5432',
         }
     }
+
+**MySQL**
+
+    $ pip install MySQL-python
+
+in `settings_local.py` file
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'mydatabase',
+            'USER': 'mydatabaseuser',
+            'PASSWORD': 'mypassword',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+        }
+    }
+
+### Set language
+
+in `settings_local.py` file
+
+    LANGUAGE_CODE = 'en'
+
+Supported languages:
+
+* english (en)
+* polish (pl)
 
 Setup database
 --------------
