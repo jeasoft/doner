@@ -1,0 +1,8 @@
+{% load i18n %}
+{% blocktrans %}
+{{ author }} just added a new comment to ticket {{ ticket_title }}.
+
+{{ comment }}
+
+Ticket url: http://{{ host }}{{ ticket_url }}
+{% endblocktrans %}

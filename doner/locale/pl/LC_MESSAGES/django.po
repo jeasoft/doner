@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-25 21:24+0000\n"
+"POT-Creation-Date: 2014-08-26 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgid "Name"
 msgstr "Nazwa"
 
 #: project/models.py:35 project/models.py:59 project/models.py:88
-#: project/models.py:118 project/templates/project/project-activity.html:45
+#: project/models.py:139 project/templates/project/project-activity.html:45
 #: project/templates/project/ticket.html:51
 msgid "Description"
 msgstr "Opis"
@@ -143,12 +143,12 @@ msgstr "Załączniki"
 msgid "Title"
 msgstr "Tytuł"
 
-#: project/models.py:89 project/models.py:120
+#: project/models.py:89 project/models.py:141
 #: project/templates/project/ticket.html:27
 msgid "Submited date"
 msgstr "Data dodania"
 
-#: project/models.py:90 project/models.py:121
+#: project/models.py:90 project/models.py:142
 msgid "Modified date"
 msgstr "Data edycji"
 
@@ -181,25 +181,34 @@ msgstr "Zadanie"
 msgid "Tickets"
 msgstr "Zadania"
 
-#: project/models.py:116 project/templates/project/project-activity.html:44
+#: project/models.py:137 project/templates/project/project-activity.html:44
 msgid "Author"
 msgstr "Autor"
 
-#: project/models.py:117
+#: project/models.py:138
 msgid "Log type"
 msgstr "Typ zdarzenia"
 
-#: project/models.py:124 project/templates/project/ticket.html:58
+#: project/models.py:145 project/templates/project/ticket.html:58
 msgid "Log"
 msgstr "Historia"
 
-#: project/models.py:125
+#: project/models.py:146
 msgid "Logs"
 msgstr "Historia"
 
-#: project/views.py:135
+#: project/views.py:140
 msgid "updated"
 msgstr "zaktualizowano"
+
+#: project/views.py:194
+#, python-format
+msgid "[update] %s"
+msgstr "[aktualizacja] %s"
+
+#: project/views.py:246
+msgid "[comment] %s"
+msgstr "[komentarz] %s"
 
 #: project/templates/auth/user_detail.html:8
 msgid "Codename"
@@ -224,6 +233,22 @@ msgstr "Prywatny"
 #: project/templates/auth/user_detail.html:32
 msgid "No projects for now."
 msgstr "Brak projektów jak na razie."
+
+#: project/templates/project/comment_notification.txt:2
+msgid ""
+"\n"
+"%(author)s just added a new comment to ticket %(ticket_title)s.\n"
+"\n"
+"%(comment)s\n"
+"\n"
+"Ticket url: http://%(host)s%(ticket_url)s\n"
+msgstr ""
+"\n"
+"%(author)s skomentował zadanie %(ticket_title)s.\n"
+"\n"
+"%(comment)s\n"
+"\n"
+"Adres zadania: http://%(host)s%(ticket_url)s\n"
 
 #: project/templates/project/log_form.html:6
 #: project/templates/project/log_form.html:17
@@ -302,6 +327,23 @@ msgstr "Wpisz swój komentarz"
 #: project/templates/project/tickets.html:18
 msgid "Create ticket"
 msgstr "Dodaj zadanie"
+
+#: project/templates/project/ticket_notification.txt:2
+#, python-format
+msgid ""
+"\n"
+"%(author)s had just updated the ticket %(ticket_title)s.\n"
+"\n"
+"%(log_description)s\n"
+"\n"
+"Ticket url: http://%(host)s%(ticket_url)s\n"
+msgstr ""
+"\n"
+"%(author)s właśnie zaktualizował zadanie %(ticket_title)s.\n"
+"\n"
+"%(log_description)s\n"
+"\n"
+"Adres zadania: http://%(host)s%(ticket_url)s\n"
 
 #: project/templates/project/tickets.html:32
 msgid "todo"

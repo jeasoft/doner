@@ -109,6 +109,27 @@ class Ticket(models.Model):
     def get_absolute_url(self):
         return reverse('ticket', kwargs={'pk': self.pk})
 
+    def get_related_users_ids(self):
+        '''
+        Get ids of users related to this ticket.
+
+        :rtype: set of integers
+        :return: user ids
+        '''
+        # get user ids from log
+        users_ids = set(self.log_set.all().order_by('author').values_list('author', flat=True).distinct())
+
+        # add id of ticket submitter
+        users_ids.add(self.submitter.id)
+
+        if self.assigned_to:
+            # add id of assigned user
+            users_ids.add(self.assigned_to.id)
+
+        return users_ids
+
+
+
 
 class Log(models.Model):
 
