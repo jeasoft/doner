@@ -9,22 +9,22 @@ Ticket Management System for Getting Things Done™ (TMS4GTD)
 Installation
 ============
 
-Setup virtualenv
-----------------
-
-    $ pip install --upgrade virtualenv
-    $ virtualenv env
-    $ source env/bin/activate
-
 Get the code
 ------------
 
     $ git clone git@github.com:trojkat/doner.git
 
+Setup virtualenv
+----------------
+
+    $ cd doner
+    $ pip install --upgrade virtualenv
+    $ virtualenv env
+    $ source env/bin/activate
+
 Install requirements
 --------------------
 
-    $ cd doner
     ./setup.py develop
 
 Create local settings file
@@ -32,66 +32,10 @@ Create local settings file
 
 Create `settings_local.py` file next to `settings.py`.
 
-    $ touch doner/doner/settings_local.py
+    $ cp doner/doner/settings_local_example.py doner/doner/settings_local.py
 
 
-set new secret key ([secret key generator](http://www.miniwebtool.com/django-secret-key-generator/))
-
-    SECRET_KEY = 'SOME_NEW_SECRET_KEY'
-
-### Database settings
-Read more on [Django docs](https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES).
-
-**PostgreSQL**
-
-    $ pip install psycopg2
-
-in `settings_local.py` file
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'mydatabase',
-            'USER': 'mydatabaseuser',
-            'PASSWORD': 'mypassword',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-    }
-
-**MySQL**
-
-    $ pip install MySQL-python
-
-in `settings_local.py` file
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'mydatabase',
-            'USER': 'mydatabaseuser',
-            'PASSWORD': 'mypassword',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
-        }
-    }
-
-### Set language
-
-in `settings_local.py` file
-
-    LANGUAGE_CODE = 'en'
-
-Supported languages:
-
-* english (en)
-* polish (pl)
-
-### Set site url
-
-in `settings_local.py` file
-
-    SITE_URL = 'http://some-domain.com'
+Edit `doner/doner/settings_local.py` file and customize settings.
 
 
 Setup database
@@ -104,3 +48,5 @@ Run app
 -------
 
     $ ./manage.py runserver
+
+Django admin panel is available under `/admin/` url.
