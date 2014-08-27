@@ -1,0 +1,25 @@
+{% load filters %}
+<table class="uk-table">
+    {% for field in form %}
+        <tr>
+            <th>
+                {{ field.label_tag }}
+            </th>
+            <td>
+                {% if field.errors %}
+                    {% for error_msg in field.errors %}
+                        <div class="uk-text-danger">
+                            {{ error_msg }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if field|fieldtype != "CheckboxInput" %}
+                    {{ field|add_attributes:'class:uk-form-large uk-width-1-1' }}
+                {% else %}
+                    {{ field }}
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
