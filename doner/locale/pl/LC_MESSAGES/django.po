@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 19:09+0000\n"
+"POT-Creation-Date: 2014-08-27 19:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "Hasło"
 
 #: project/models.py:8
 msgid "Open"
-msgstr "Otwarty"
+msgstr "Otwarte"
 
 #: project/models.py:9
 msgid "In progress"
@@ -57,7 +57,7 @@ msgstr "W realizacji"
 
 #: project/models.py:10
 msgid "Closed"
-msgstr "Zamknięty"
+msgstr "Zamknięte"
 
 #: project/models.py:14
 msgid "High"
@@ -197,18 +197,18 @@ msgstr "Historia"
 msgid "Logs"
 msgstr "Historia"
 
-#: project/views.py:140
-msgid "updated"
-msgstr "zaktualizowano"
-
-#: project/views.py:194
+#: project/signals.py:94
 #, python-format
 msgid "[update] %s"
 msgstr "[aktualizacja] %s"
 
-#: project/views.py:246
-msgid "[comment] %s"
-msgstr "[komentarz] %s"
+#: project/signals.py:135
+msgid "[new ticket] %s"
+msgstr "[Nowe zadania] %s"
+
+#: project/views.py:137
+msgid "updated"
+msgstr "zaktualizowano"
 
 #: project/templates/auth/user_detail.html:8
 msgid "Codename"
@@ -239,14 +239,14 @@ msgid ""
 "\n"
 "%(author)s just added a new comment to ticket %(ticket_title)s.\n"
 "\n"
-"%(comment)s\n"
+"%(msg)s\n"
 "\n"
 "Ticket url: http://%(host)s%(ticket_url)s\n"
 msgstr ""
 "\n"
 "%(author)s skomentował zadanie %(ticket_title)s.\n"
 "\n"
-"%(comment)s\n"
+"%(msg)s\n"
 "\n"
 "Adres zadania: http://%(host)s%(ticket_url)s\n"
 
@@ -261,6 +261,33 @@ msgstr "Edytuj komentarz"
 #: project/templates/project/ticket.html:98
 msgid "Add comment"
 msgstr "Dodaj komentarz"
+
+#: project/templates/project/new_ticket_notification.txt:2
+#, python-format
+msgid ""
+"\n"
+"%(ticket_submitter)s just created a new ticket %(ticket_title)s.\n"
+"\n"
+"Priority: %(ticket_priority)s\n"
+"Status: %(ticket_status)s\n"
+"Type: %(ticket_type)s\n"
+"Assigned to: %(ticket_assigned_to)s\n"
+"\n"
+"%(ticket_description)s\n"
+"\n"
+"Ticket url: %(site_url)s%(ticket_url)s\n"
+msgstr ""
+"\n"
+"%(ticket_submitter)s właśnie dodał nowe zadanie %(ticket_title)s.\n"
+"\n"
+"Priorytet: %(ticket_priority)s\n"
+"Status: %(ticket_status)s\n"
+"Typ: %(ticket_type)s\n"
+"Przypisane do: %(ticket_assigned_to)s\n"
+"\n"
+"%(ticket_description)s\n"
+"\n"
+"Adres zadania: %(site_url)s%(ticket_url)s\n"
 
 #: project/templates/project/project-activity.html:4
 #: project/templates/project/project-activity.html:10
@@ -329,19 +356,18 @@ msgid "Create ticket"
 msgstr "Dodaj zadanie"
 
 #: project/templates/project/ticket_notification.txt:2
-#, python-format
 msgid ""
 "\n"
 "%(author)s had just updated the ticket %(ticket_title)s.\n"
 "\n"
-"%(log_description)s\n"
+"%(msg)s\n"
 "\n"
-"Ticket url: http://%(host)s%(ticket_url)s\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
 msgstr ""
 "\n"
 "%(author)s właśnie zaktualizował zadanie %(ticket_title)s.\n"
 "\n"
-"%(log_description)s\n"
+"%(msg)s\n"
 "\n"
 "Adres zadania: http://%(host)s%(ticket_url)s\n"
 

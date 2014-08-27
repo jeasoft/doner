@@ -2,7 +2,7 @@
 {% blocktrans %}
 {{ author }} just added a new comment to ticket {{ ticket_title }}.
 
-{{ comment }}
+{{ msg }}
 
 Ticket url: http://{{ host }}{{ ticket_url }}
 {% endblocktrans %}

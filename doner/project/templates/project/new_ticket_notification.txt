@@ -1,0 +1,13 @@
+{% load i18n %}
+{% blocktrans %}
+{{ ticket_submitter }} just created a new ticket {{ ticket_title }}.
+
+Priority: {{ ticket_priority }}
+Status: {{ ticket_status }}
+Type: {{ ticket_type }}
+Assigned to: {{ ticket_assigned_to }}
+
+{{ ticket_description }}
+
+Ticket url: {{ site_url }}{{ ticket_url }}
+{% endblocktrans %}

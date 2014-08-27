@@ -63,41 +63,79 @@ def notify_related_users(sender, instance, created, **kwargs):
         # remove author id
         users_ids.remove(instance.author.id)
 
-    if users_ids:
-        # get username and email
-        User = get_user_model()
-        emails = User.objects.filter(id__in=users_ids).values_list('email', flat=True)
+    if not users_ids:
+        return
+
+    # get email
+    User = get_user_model()
+    emails = User.objects.filter(id__in=users_ids).values_list('email', flat=True)
+
+    if instance.ltype == 2:
+        # new comment
+        template = 'project/comment_notification.txt'
+    else:
+        # ticket update
+        template = 'project/ticket_notification.txt'
+
+    msg_body = get_template(template).render(
+        Context({
+            'msg': instance.description,
+            'author': instance.author,
+            'host': settings.SITE_URL,
+            'ticket_title': ticket.title,
+            'ticket_url': ticket.get_absolute_url()
+        })
+    )
+
+    ready_emails = []
+    for email in emails:
+        ready_emails.append(
+            (
+                _(u'[update] %s' % ticket.title),
+                u'%s' % msg_body,
+                settings.DEFAULT_FROM_EMAIL,
+                [email]
+            ),
+        )
+    send_mass_mail(ready_emails)
 
 
-        if instance.ltype == 2:
-            msg_body = get_template('project/comment_notification.txt').render(
-                Context({
-                    'comment': instance.description,
-                    'author': instance.author,
-                    'host': settings.SITE_URL,
-                    'ticket_title': ticket.title,
-                    'ticket_url': ticket.get_absolute_url()
-                })
-            )
-        else:
-            msg_body = get_template('project/ticket_notification.txt').render(
-                Context({
-                    'log_description': instance.description,
-                    'author': instance.author,
-                    'host': settings.SITE_URL,
-                    'ticket_title': ticket.title,
-                    'ticket_url': ticket.get_absolute_url()
-                })
-            )
+@receiver(post_save, sender=Ticket)
+def notify_about_new_ticket(sender, instance, created, **kwargs):
+    if not created:
+        return
 
-        ready_emails = []
-        for email in emails:
-            ready_emails.append(
-                (
-                    _(u'[update] %s' % ticket.title),
-                    u'%s' % msg_body,
-                    settings.DEFAULT_FROM_EMAIL,
-                    [email]
-                ),
-            )
-        send_mass_mail(ready_emails)
+    members_emails = instance.project.members.all().values_list('email', flat=True).exclude(id__in=[instance.submitter_id])
+
+    if not members_emails:
+        return
+
+    ticket_assigned_to = '-'
+    if instance.assigned_to:
+        ticket_assigned_to = instance.assigned_to
+
+    msg_body = get_template('project/new_ticket_notification.txt').render(
+        Context({
+            'ticket_submitter': instance.submitter,
+            'ticket_assigned_to': ticket_assigned_to,
+            'ticket_title': instance.title,
+            'ticket_priority': instance.get_priority_display(),
+            'ticket_status': instance.get_status_display(),
+            'ticket_type': instance.get_ttype_display(),
+            'ticket_description': instance.description,
+            'host': settings.SITE_URL,
+            'ticket_url': instance.get_absolute_url(),
+        })
+    )
+
+    ready_emails = []
+    for email in members_emails:
+        ready_emails.append(
+            (
+                _(u'[new ticket] %s' % instance.title),
+                u'%s' % msg_body,
+                settings.DEFAULT_FROM_EMAIL,
+                [email]
+            ),
+        )
+    send_mass_mail(ready_emails)
