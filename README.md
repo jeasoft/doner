@@ -32,10 +32,11 @@ Create local settings file
 
 Create `settings_local.py` file next to `settings.py`.
 
-    $ cp doner/doner/settings_local_example.py doner/doner/settings_local.py
+    $ cd doner
+    $ cp doner/settings_local_example.py doner/settings_local.py
 
 
-Edit `doner/doner/settings_local.py` file and customize settings.
+Edit `doner/settings_local.py` file and customize settings.
 
 
 Setup database
