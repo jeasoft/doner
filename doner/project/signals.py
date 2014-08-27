@@ -1,9 +1,15 @@
 from datetime import datetime
 
+from django.utils.translation import ugettext as _
 from django.dispatch import receiver
 from django.db.models.signals import m2m_changed, post_save, post_delete
+from django.template.loader import get_template
+from django.template import Context
+from django.core.mail import send_mass_mail
+from django.contrib.auth import get_user_model
+from django.conf import settings
 
-from .models import Project, Milestone, Ticket
+from .models import Project, Milestone, Ticket, Log
 
 
 @receiver(m2m_changed, sender=Project.members.through)
@@ -43,3 +49,55 @@ def update_project_last_active(sender, instance, **kwargs):
     '''
     instance.project.last_active = datetime.now()
     instance.project.save()
+
+
+@receiver(post_save, sender=Log)
+def notify_related_users(sender, instance, created, **kwargs):
+
+    ticket = instance.ticket
+
+    # get related users ids
+    users_ids = ticket.get_related_users_ids()
+
+    if instance.author.id in users_ids:
+        # remove author id
+        users_ids.remove(instance.author.id)
+
+    if users_ids:
+        # get username and email
+        User = get_user_model()
+        emails = User.objects.filter(id__in=users_ids).values_list('email', flat=True)
+
+
+        if instance.ltype == 2:
+            msg_body = get_template('project/comment_notification.txt').render(
+                Context({
+                    'comment': instance.description,
+                    'author': instance.author,
+                    'host': settings.SITE_URL,
+                    'ticket_title': ticket.title,
+                    'ticket_url': ticket.get_absolute_url()
+                })
+            )
+        else:
+            msg_body = get_template('project/ticket_notification.txt').render(
+                Context({
+                    'log_description': instance.description,
+                    'author': instance.author,
+                    'host': settings.SITE_URL,
+                    'ticket_title': ticket.title,
+                    'ticket_url': ticket.get_absolute_url()
+                })
+            )
+
+        ready_emails = []
+        for email in emails:
+            ready_emails.append(
+                (
+                    _(u'[update] %s' % ticket.title),
+                    u'%s' % msg_body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email]
+                ),
+            )
+        send_mass_mail(ready_emails)

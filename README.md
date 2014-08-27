@@ -87,6 +87,13 @@ Supported languages:
 * english (en)
 * polish (pl)
 
+### Set site url
+
+in `settings_local.py` file
+
+    SITE_URL = 'http://some-domain.com'
+
+
 Setup database
 --------------
 
