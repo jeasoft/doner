@@ -16,5 +16,5 @@ urlpatterns = patterns('project.views',
     url(r'^ticket/(?P<pk>\d+)/$', TicketDetails.as_view(), name='ticket'),
     url(r'^ticket/(?P<pk>\d+)/edit/$', TicketEdit.as_view(), name='ticket-edit'),
     url(r'^ticket/(?P<pk>\d+)/add-comment/$', CommentAdd.as_view(), name='ticket-add-comment'),
-    url(r'^my-ticket/$', MyTickets.as_view(), name='my-tickets'),
+    url(r'^my-tickets/$', MyTickets.as_view(), name='my-tickets'),
 )
