@@ -182,3 +182,32 @@ class CommentAdd(MembersOnlyView, CreateView):
 
     def get_success_url(self):
         return self.ticket.get_absolute_url()
+
+
+class MyTickets(ListView):
+
+    model = Ticket
+    template_name = 'project/my_tickets.html'
+    ordering_fields = ('title', 'status', 'ttype', 'submitted_date', 'modified_date')
+
+    def get_queryset(self):
+
+        queryset = self.model.objects.filter(assigned_to=self.request.user)
+
+        filter_by = self.request.GET.get('filter')
+        if filter_by and filter_by in ('closed'):
+            queryset = queryset.filter(status=3)
+        else:
+            queryset = queryset.filter(status__lt=3)
+
+        order = self.request.GET.get('order')
+        if order in self.ordering_fields:
+            queryset = queryset.order_by(order)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(MyTickets, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter')
+        context['order'] = self.request.GET.get('order')
+        return context

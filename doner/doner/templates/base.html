@@ -25,6 +25,7 @@
             <div class="uk-navbar-flip">
                 <ul class="uk-navbar-nav">
                     {% if user.is_authenticated %}
+                        <li><a href="{% url 'my-tickets' %}"><i class="uk-icon-star"></i> {% trans "My tickets" %}</a></li>
                         <li><a href="{% url 'user' user.username %}"><i class="uk-icon-user"></i> {{ user.username }}</a></li>
                         <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                     {% else %}

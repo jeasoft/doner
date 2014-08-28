@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, FormView
+from django.views.generic.list import ListView
 from django.utils.translation import ugettext as _
 
 from project.access_control_views import LoginRequiredView, UserPrivateView

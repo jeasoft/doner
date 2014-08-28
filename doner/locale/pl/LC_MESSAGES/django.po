@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-28 20:20+0000\n"
+"POT-Creation-Date: 2014-08-28 20:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: doner/views.py:46
+#: doner/views.py:47
 msgid "Password changed."
 msgstr "Hasło zostało zmienione."
 
@@ -35,11 +35,16 @@ msgstr "Brak dostępu"
 msgid "Projects"
 msgstr "Projekty"
 
-#: doner/templates/base.html:29
+#: doner/templates/base.html:28 project/templates/project/my_tickets.html:4
+#: project/templates/project/my_tickets.html:14
+msgid "My tickets"
+msgstr "Moje zadania"
+
+#: doner/templates/base.html:30
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: doner/templates/base.html:31 doner/templates/login.html:19
+#: doner/templates/base.html:32 doner/templates/login.html:19
 msgid "Login"
 msgstr "Zaloguj"
 
@@ -172,7 +177,8 @@ msgstr "Załącznik"
 msgid "Attachments"
 msgstr "Załączniki"
 
-#: project/models.py:87 project/templates/project/project-activity.html:23
+#: project/models.py:87 project/templates/project/my_tickets.html:24
+#: project/templates/project/project-activity.html:23
 #: project/templates/project/tickets.html:39
 msgid "Title"
 msgstr "Tytuł"
@@ -194,7 +200,8 @@ msgstr "Dodane przez"
 msgid "Assigned to"
 msgstr "Przypisane do"
 
-#: project/models.py:95 project/templates/project/ticket.html:25
+#: project/models.py:95 project/templates/project/my_tickets.html:25
+#: project/templates/project/ticket.html:25
 #: project/templates/project/tickets.html:40
 msgid "Status"
 msgstr "Status"
@@ -262,17 +269,32 @@ msgstr ""
 "\n"
 "Adres zadania: http://%(host)s%(ticket_url)s\n"
 
-#: project/templates/project/log_form.html:6
-#: project/templates/project/log_form.html:17
-msgid "Update comment"
-msgstr "Edytuj komentarz"
+#: project/templates/project/my_tickets.html:17
+#: project/templates/project/tickets.html:32
+msgid "todo"
+msgstr "do zrobienia"
 
-#: project/templates/project/log_form.html:8
-#: project/templates/project/log_form.html:19
-#: project/templates/project/ticket.html:87
-#: project/templates/project/ticket.html:98
-msgid "Add comment"
-msgstr "Dodaj komentarz"
+#: project/templates/project/my_tickets.html:18
+#: project/templates/project/tickets.html:33
+msgid "closed"
+msgstr "zamknięte"
+
+#: project/templates/project/my_tickets.html:26
+#: project/templates/project/tickets.html:41
+msgid "Type"
+msgstr "Typ"
+
+#: project/templates/project/my_tickets.html:27
+#: project/templates/project/project-activity.html:24
+#: project/templates/project/tickets.html:42
+msgid "Submit date"
+msgstr "Data dodania"
+
+#: project/templates/project/my_tickets.html:28
+#: project/templates/project/ticket.html:33
+#: project/templates/project/tickets.html:43
+msgid "Last update"
+msgstr "Ostatnia aktualizacja"
 
 #: project/templates/project/new_ticket_notification.txt:2
 #, python-format
@@ -315,11 +337,6 @@ msgstr "Ostatnia aktywność"
 msgid "New tickets"
 msgstr "Nowe zadania"
 
-#: project/templates/project/project-activity.html:24
-#: project/templates/project/tickets.html:42
-msgid "Submit date"
-msgstr "Data dodania"
-
 #: project/templates/project/project-activity.html:40
 msgid "Last actions"
 msgstr "Ostanie zmiany"
@@ -352,10 +369,10 @@ msgstr "Członkowie"
 msgid "Update ticket"
 msgstr "Edytuj zadanie"
 
-#: project/templates/project/ticket.html:33
-#: project/templates/project/tickets.html:43
-msgid "Last update"
-msgstr "Ostatnia aktualizacja"
+#: project/templates/project/ticket.html:87
+#: project/templates/project/ticket.html:98
+msgid "Add comment"
+msgstr "Dodaj komentarz"
 
 #: project/templates/project/ticket.html:95
 msgid "Enter your comment"
@@ -383,15 +400,3 @@ msgstr ""
 "%(msg)s\n"
 "\n"
 "Adres zadania: http://%(host)s%(ticket_url)s\n"
-
-#: project/templates/project/tickets.html:32
-msgid "todo"
-msgstr "do zrobienia"
-
-#: project/templates/project/tickets.html:33
-msgid "closed"
-msgstr "zamknięte"
-
-#: project/templates/project/tickets.html:41
-msgid "Type"
-msgstr "Typ"
