@@ -10,6 +10,7 @@
         <div class="uk-width-1-2 uk-text-right">
             {% if request.user == object %}
                 <a href="{% url 'user-edit' object.username %}" class="uk-button">{% trans "Change e-mail" %}</a>
+                <a href="{% url 'change-password' object.username %}" class="uk-button">{% trans "Change password" %}</a>
             {% endif %}
         </div>
     </div>

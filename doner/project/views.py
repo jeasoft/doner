@@ -6,7 +6,6 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.utils.translation import ugettext as _
-from django.contrib.auth import get_user_model
 from django.conf import settings
 
 from .access_control_views import (
@@ -183,16 +182,3 @@ class CommentAdd(MembersOnlyView, CreateView):
 
     def get_success_url(self):
         return self.ticket.get_absolute_url()
-
-
-class UserDetails(LoginRequiredView, DetailView):
-
-    model = get_user_model()
-    slug_field = 'username'
-
-
-class UserEdit(UserPrivateView, UpdateView):
-
-    model = get_user_model()
-    slug_field = 'username'
-    fields = ['email']

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-27 19:58+0000\n"
+"POT-Creation-Date: 2014-08-28 20:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,11 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
+#: doner/views.py:46
+msgid "Password changed."
+msgstr "Hasło zostało zmienione."
+
 #: doner/templates/access-denied.html:8
 msgid "Access denied"
 msgstr "Brak dostępu"
 
-#: doner/templates/base.html:20 project/models.py:45
+#: doner/templates/base.html:22 project/models.py:45
 #: project/templates/project/project-activity.html:8
 #: project/templates/project/project_form.html:6
 #: project/templates/project/ticket.html:10
@@ -31,11 +35,11 @@ msgstr "Brak dostępu"
 msgid "Projects"
 msgstr "Projekty"
 
-#: doner/templates/base.html:27
+#: doner/templates/base.html:29
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: doner/templates/base.html:29 doner/templates/login.html:19
+#: doner/templates/base.html:31 doner/templates/login.html:19
 msgid "Login"
 msgstr "Zaloguj"
 
@@ -46,6 +50,36 @@ msgstr "Nick"
 #: doner/templates/login.html:16
 msgid "Password"
 msgstr "Hasło"
+
+#: doner/templates/auth/password_change_form.html:5
+#: doner/templates/auth/password_change_form.html:12
+#: doner/templates/auth/user_detail.html:13
+msgid "Change password"
+msgstr "Zmień hasło"
+
+#: doner/templates/auth/user_detail.html:8
+msgid "Codename"
+msgstr "Kryptonim"
+
+#: doner/templates/auth/user_detail.html:12
+#: doner/templates/auth/user_form.html:6
+#: doner/templates/auth/user_form.html:15
+msgid "Change e-mail"
+msgstr "Zmień e-mail"
+
+#: doner/templates/auth/user_detail.html:22
+#: project/templates/project/project_list.html:11
+msgid "Project list"
+msgstr "Lista projektów"
+
+#: doner/templates/auth/user_detail.html:28
+#: project/templates/project/project_list.html:16
+msgid "private"
+msgstr "Prywatny"
+
+#: doner/templates/auth/user_detail.html:33
+msgid "No projects for now."
+msgstr "Brak projektów jak na razie."
 
 #: project/models.py:8
 msgid "Open"
@@ -203,38 +237,16 @@ msgid "[update] %s"
 msgstr "[aktualizacja] %s"
 
 #: project/signals.py:135
+#, python-format
 msgid "[new ticket] %s"
 msgstr "[Nowe zadania] %s"
 
-#: project/views.py:137
+#: project/views.py:136
 msgid "updated"
 msgstr "zaktualizowano"
 
-#: project/templates/auth/user_detail.html:8
-msgid "Codename"
-msgstr "Kryptonim"
-
-#: project/templates/auth/user_detail.html:12
-#: project/templates/auth/user_form.html:6
-#: project/templates/auth/user_form.html:15
-msgid "Change e-mail"
-msgstr "Zmień e-mail"
-
-#: project/templates/auth/user_detail.html:21
-#: project/templates/project/project_list.html:11
-msgid "Project list"
-msgstr "Lista projektów"
-
-#: project/templates/auth/user_detail.html:27
-#: project/templates/project/project_list.html:16
-msgid "private"
-msgstr "Prywatny"
-
-#: project/templates/auth/user_detail.html:32
-msgid "No projects for now."
-msgstr "Brak projektów jak na razie."
-
 #: project/templates/project/comment_notification.txt:2
+#, python-format
 msgid ""
 "\n"
 "%(author)s just added a new comment to ticket %(ticket_title)s.\n"
@@ -356,6 +368,7 @@ msgid "Create ticket"
 msgstr "Dodaj zadanie"
 
 #: project/templates/project/ticket_notification.txt:2
+#, python-format
 msgid ""
 "\n"
 "%(author)s had just updated the ticket %(ticket_title)s.\n"
