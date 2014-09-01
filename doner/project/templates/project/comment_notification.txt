@@ -4,5 +4,5 @@
 
 {{ msg }}
 
-Ticket url: http://{{ host }}{{ ticket_url }}
+Ticket url: {{ host }}{{ ticket_url }}
 {% endblocktrans %}
