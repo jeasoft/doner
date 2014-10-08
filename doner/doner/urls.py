@@ -13,9 +13,9 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', 'doner.views.logout_view', name='logout'),
 
-    url(r'^users/(?P<slug>[\w-]+)/change-password/$', UserChangePassword.as_view(), name='change-password'),
-    url(r'^users/(?P<slug>[\w-]+)/edit/$', UserEdit.as_view(), name='user-edit'),
-    url(r'^users/(?P<slug>[\w-]+)/$', UserDetails.as_view(), name='user'),
+    url(r'^users/(?P<slug>[-.\w]+)/change-password/$', UserChangePassword.as_view(), name='change-password'),
+    url(r'^users/(?P<slug>[-.\w]+)/edit/$', UserEdit.as_view(), name='user-edit'),
+    url(r'^users/(?P<slug>[-.\w]+)/$', UserDetails.as_view(), name='user'),
 
     url(r'', include('project.urls')),
 )
