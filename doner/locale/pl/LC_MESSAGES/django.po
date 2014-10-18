@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-28 20:47+0000\n"
+"POT-Creation-Date: 2014-10-18 16:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -253,14 +253,14 @@ msgid "updated"
 msgstr "zaktualizowano"
 
 #: project/templates/project/comment_notification.txt:2
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "%(author)s just added a new comment to ticket %(ticket_title)s.\n"
 "\n"
 "%(msg)s\n"
 "\n"
-"Ticket url: http://%(host)s%(ticket_url)s\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
 msgstr ""
 "\n"
 "%(author)s skomentował zadanie %(ticket_title)s.\n"
@@ -297,7 +297,7 @@ msgid "Last update"
 msgstr "Ostatnia aktualizacja"
 
 #: project/templates/project/new_ticket_notification.txt:2
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "%(ticket_submitter)s just created a new ticket %(ticket_title)s.\n"
@@ -309,7 +309,7 @@ msgid ""
 "\n"
 "%(ticket_description)s\n"
 "\n"
-"Ticket url: %(site_url)s%(ticket_url)s\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
 msgstr ""
 "\n"
 "%(ticket_submitter)s właśnie dodał nowe zadanie %(ticket_title)s.\n"

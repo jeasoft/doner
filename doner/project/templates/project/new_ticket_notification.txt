@@ -9,5 +9,5 @@ Assigned to: {{ ticket_assigned_to }}
 
 {{ ticket_description }}
 
-Ticket url: {{ site_url }}{{ ticket_url }}
+Ticket url: {{ host }}{{ ticket_url }}
 {% endblocktrans %}
