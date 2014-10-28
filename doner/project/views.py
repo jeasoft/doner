@@ -48,6 +48,7 @@ class Tickets(ProjectView, ListView):
     model = Ticket
     template_name = 'project/tickets.html'
     ordering_fields = ('title', 'status', 'ttype', 'submitted_date', 'modified_date')
+    paginate_by = 25
 
     def get_queryset(self):
         queryset = self.model.objects.filter(project__id=self.kwargs['pk'])
@@ -189,6 +190,7 @@ class MyTickets(ListView):
     model = Ticket
     template_name = 'project/my_tickets.html'
     ordering_fields = ('title', 'status', 'ttype', 'submitted_date', 'modified_date')
+    paginate_by = 25
 
     def get_queryset(self):
 
