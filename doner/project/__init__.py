@@ -1,1 +1,1 @@
-import signals
+from django.core import signals

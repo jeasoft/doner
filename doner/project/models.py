@@ -1,4 +1,13 @@
+# -*- coding: utf-8 -*-
+
+
+from __future__ import unicode_literals
+
+from datetime import date, datetime
+
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -28,7 +37,7 @@ LOG_TYPES = (
     (2, _('Comments')),
 )
 
-
+@python_2_unicode_compatible
 class Project(models.Model):
 
     name = models.CharField(verbose_name=_('Name'), max_length=50)
@@ -45,8 +54,8 @@ class Project(models.Model):
         verbose_name_plural = _('Projects')
         ordering = ('name',)
 
-    def __unicode__(self):
-        return u'%s' % self.name
+    def __str__(self):
+        return str(self.name)
 
     def get_absolute_url(self):
         return reverse('project', kwargs={'pk': self.pk})
@@ -63,8 +72,8 @@ class Milestone(models.Model):
         verbose_name = _('Milestone')
         verbose_name_plural = _('Milestones')
 
-    def __unicode__(self):
-        return u'%s' % self.name
+    def __str__(self):
+        return str(self.name)
 
 
 class Attachment(models.Model):
@@ -103,8 +112,8 @@ class Ticket(models.Model):
         verbose_name_plural = _('Tickets')
         ordering = ('priority', 'title')
 
-    def __unicode__(self):
-        return u'%s' % self.title
+    def __str__(self):
+        return str(self.title)
 
     def get_absolute_url(self):
         return reverse('ticket', kwargs={'pk': self.pk})
