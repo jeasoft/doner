@@ -1,0 +1,402 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-18 16:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: doner/views.py:47
+msgid "Password changed."
+msgstr "Contraseña cambiada."
+
+#: doner/templates/access-denied.html:8
+msgid "Access denied"
+msgstr "Acceso Denegado"
+
+#: doner/templates/base.html:22 project/models.py:45
+#: project/templates/project/project-activity.html:8
+#: project/templates/project/project_form.html:6
+#: project/templates/project/ticket.html:10
+#: project/templates/project/tickets.html:23
+msgid "Projects"
+msgstr "Proyectos"
+
+#: doner/templates/base.html:28 project/templates/project/my_tickets.html:4
+#: project/templates/project/my_tickets.html:14
+msgid "My tickets"
+msgstr "Mis Tickets"
+
+#: doner/templates/base.html:30
+msgid "Logout"
+msgstr "Cerrar Sesión"
+
+#: doner/templates/base.html:32 doner/templates/login.html:19
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+#: doner/templates/login.html:13
+msgid "Username"
+msgstr "Nombre de Usuario"
+
+#: doner/templates/login.html:16
+msgid "Password"
+msgstr "Contraseña"
+
+#: doner/templates/auth/password_change_form.html:5
+#: doner/templates/auth/password_change_form.html:12
+#: doner/templates/auth/user_detail.html:13
+msgid "Change password"
+msgstr "Cambiar Contraseña"
+
+#: doner/templates/auth/user_detail.html:8
+msgid "Codename"
+msgstr "Nombre Clave"
+
+#: doner/templates/auth/user_detail.html:12
+#: doner/templates/auth/user_form.html:6
+#: doner/templates/auth/user_form.html:15
+msgid "Change e-mail"
+msgstr "Cambiar e-mail"
+
+#: doner/templates/auth/user_detail.html:22
+#: project/templates/project/project_list.html:11
+msgid "Project list"
+msgstr "Lista de Proyectos"
+
+#: doner/templates/auth/user_detail.html:28
+#: project/templates/project/project_list.html:16
+msgid "private"
+msgstr "Privado"
+
+#: doner/templates/auth/user_detail.html:33
+msgid "No projects for now."
+msgstr "No Existen Proyectos en este momento."
+
+#: project/models.py:8
+msgid "Open"
+msgstr "Abierto"
+
+#: project/models.py:9
+msgid "In progress"
+msgstr "En Progreso"
+
+#: project/models.py:10
+msgid "Closed"
+msgstr "Cerrado"
+
+#: project/models.py:14
+msgid "High"
+msgstr "Alta"
+
+#: project/models.py:15
+msgid "Medium"
+msgstr "Mediana"
+
+#: project/models.py:16
+msgid "Low"
+msgstr "Baja"
+
+#: project/models.py:20
+msgid "Task"
+msgstr "Tarea"
+
+#: project/models.py:21
+msgid "Bug"
+msgstr "Error"
+
+#: project/models.py:22
+msgid "Improvement"
+msgstr "Mejora"
+
+#: project/models.py:23
+msgid "Research"
+msgstr "Investigar"
+
+#: project/models.py:27
+msgid "Update"
+msgstr "Actualizar"
+
+#: project/models.py:28
+msgid "Comments"
+msgstr "Comentarios"
+
+#: project/models.py:34 project/models.py:58
+msgid "Name"
+msgstr "Nombre"
+
+#: project/models.py:35 project/models.py:59 project/models.py:88
+#: project/models.py:139 project/templates/project/project-activity.html:45
+#: project/templates/project/ticket.html:51
+msgid "Description"
+msgstr "Descripción"
+
+#: project/models.py:36
+msgid "Private"
+msgstr "Privado"
+
+#: project/models.py:37 project/models.py:73
+msgid "Created date"
+msgstr "Fecha de creación"
+
+#: project/models.py:44 project/models.py:57 project/models.py:85
+msgid "Project"
+msgstr "Proyecto"
+
+#: project/models.py:60
+msgid "Deadline"
+msgstr "Fecha tope"
+
+#: project/models.py:63 project/models.py:86
+#: project/templates/project/ticket.html:43
+msgid "Milestone"
+msgstr "Meta"
+
+#: project/models.py:64
+msgid "Milestones"
+msgstr "Metas"
+
+#: project/models.py:76
+msgid "Attachment"
+msgstr "Archivo Adjunto"
+
+#: project/models.py:77
+msgid "Attachments"
+msgstr "Archivos Adjuntos"
+
+#: project/models.py:87 project/templates/project/my_tickets.html:24
+#: project/templates/project/project-activity.html:23
+#: project/templates/project/tickets.html:39
+msgid "Title"
+msgid "Título"
+
+#: project/models.py:89 project/models.py:141
+#: project/templates/project/ticket.html:27
+msgid "Submited date"
+msgstr "Fecha de envío"
+
+#: project/models.py:90 project/models.py:142
+msgid "Modified date"
+msgstr "Fecha de Modificación"
+
+#: project/models.py:92 project/templates/project/ticket.html:39
+msgid "Submitter"
+msgstr "Enviado por"
+
+#: project/models.py:93 project/templates/project/ticket.html:45
+msgid "Assigned to"
+msgstr "Asignado a"
+
+#: project/models.py:95 project/templates/project/my_tickets.html:25
+#: project/templates/project/ticket.html:25
+#: project/templates/project/tickets.html:40
+msgid "Status"
+msgstr "Status"
+
+#: project/models.py:96 project/templates/project/ticket.html:31
+msgid "Priority"
+msgstr "Prioridad"
+
+#: project/models.py:97 project/templates/project/ticket.html:37
+msgid "Ticket type"
+msgstr "Tipo de Ticket"
+
+#: project/models.py:102 project/templates/project/ticket.html:12
+msgid "Ticket"
+msgstr "Ticket"
+
+#: project/models.py:103
+msgid "Tickets"
+msgstr "Tickets"
+
+#: project/models.py:137 project/templates/project/project-activity.html:44
+msgid "Author"
+msgstr "Autor"
+
+#: project/models.py:138
+msgid "Log type"
+msgstr "Tipo de Histórico (log)"
+
+#: project/models.py:145 project/templates/project/ticket.html:58
+msgid "Log"
+msgstr "Histórico (Log)"
+
+#: project/models.py:146
+msgid "Logs"
+msgstr "Históricos (Logs)"
+
+#: project/signals.py:94
+#, python-format
+msgid "[update] %s"
+msgid "[Actualizar] %s"
+
+#: project/signals.py:135
+#, python-format
+msgid "[new ticket] %s"
+msgstr "[Nuevo Ticket] %s"
+
+#: project/views.py:136
+msgid "updated"
+msgstr "Actualizado"
+
+#: project/templates/project/comment_notification.txt:2
+#, fuzzy, python-format
+msgid ""
+"\n"
+"%(author)s just added a new comment to ticket %(ticket_title)s.\n"
+"\n"
+"%(msg)s\n"
+"\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
+msgstr ""
+"\n"
+"%(author)s acaba de añadir un nuevo comentario a ticket %(ticket_title)s.\n"
+"\n"
+"%(msg)s\n"
+"\n"
+"URL de ticket: http://%(host)s%(ticket_url)s\n"
+
+#: project/templates/project/my_tickets.html:17
+#: project/templates/project/tickets.html:32
+msgid "todo"
+msgstr "ha realizar"
+
+#: project/templates/project/my_tickets.html:18
+#: project/templates/project/tickets.html:33
+msgid "closed"
+msgstr "Cerrado"
+
+#: project/templates/project/my_tickets.html:26
+#: project/templates/project/tickets.html:41
+msgid "Type"
+msgstr "Tipo"
+
+#: project/templates/project/my_tickets.html:27
+#: project/templates/project/project-activity.html:24
+#: project/templates/project/tickets.html:42
+msgid "Submit date"
+msgstr "Fecha de sometimiento"
+
+#: project/templates/project/my_tickets.html:28
+#: project/templates/project/ticket.html:33
+#: project/templates/project/tickets.html:43
+msgid "Last update"
+msgstr "Última Actualización"
+
+#: project/templates/project/new_ticket_notification.txt:2
+#, fuzzy, python-format
+msgid ""
+"\n"
+"%(ticket_submitter)s just created a new ticket %(ticket_title)s.\n"
+"\n"
+"Priority: %(ticket_priority)s\n"
+"Status: %(ticket_status)s\n"
+"Type: %(ticket_type)s\n"
+"Assigned to: %(ticket_assigned_to)s\n"
+"\n"
+"%(ticket_description)s\n"
+"\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
+msgstr ""
+"\n"
+"%(ticket_submitter)Acaba de añadir un nuevo ticket: %(ticket_title)s.\n"
+"\n"
+"Prioridad: %(ticket_priority)s\n"
+"Status: %(ticket_status)s\n"
+"Tipo: %(ticket_type)s\n"
+"Asignado a: %(ticket_assigned_to)s\n"
+"\n"
+"%(ticket_description)s\n"
+"\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
+
+#: project/templates/project/project-activity.html:4
+#: project/templates/project/project-activity.html:10
+msgid "Activity"
+msgstr "Actividad"
+
+#: project/templates/project/project-activity.html:15
+#: project/templates/project/tickets.html:17
+msgid "Project activity"
+msgstr "Actividad del Proyecto"
+
+#: project/templates/project/project-activity.html:19
+msgid "New tickets"
+msgstr "Nuevo Tickets"
+
+#: project/templates/project/project-activity.html:40
+msgid "Last actions"
+msgstr "Últimas acciones"
+
+#: project/templates/project/project_form.html:9
+#: project/templates/project/project_form.html:18
+#: project/templates/project/project_form.html:29
+#: project/templates/project/tickets.html:15
+msgid "Update project"
+msgstr "Actualizar Proyecto"
+
+#: project/templates/project/project_form.html:11
+#: project/templates/project/project_form.html:20
+#: project/templates/project/project_form.html:31
+#: project/templates/project/project_list.html:6
+msgid "Create project"
+msgstr "Crear proyectos"
+
+#: project/templates/project/project_list.html:26
+msgid "Last active"
+msgstr "Último activo"
+
+#: project/templates/project/project_list.html:27
+msgid "Members"
+msgstr "Miembros"
+
+#: project/templates/project/ticket.html:17
+#: project/templates/project/ticket_form.html:6
+#: project/templates/project/ticket_form.html:17
+msgid "Update ticket"
+msgstr "Actualizar Ticket"
+
+#: project/templates/project/ticket.html:87
+#: project/templates/project/ticket.html:98
+msgid "Add comment"
+msgstr "Añadir Comentario"
+
+#: project/templates/project/ticket.html:95
+msgid "Enter your comment"
+msgstr "Comentar"
+
+#: project/templates/project/ticket_form.html:8
+#: project/templates/project/ticket_form.html:19
+#: project/templates/project/tickets.html:18
+msgid "Create ticket"
+msgstr "Crear Ticket"
+
+#: project/templates/project/ticket_notification.txt:2
+#, python-format
+msgid ""
+"\n"
+"%(author)s had just updated the ticket %(ticket_title)s.\n"
+"\n"
+"%(msg)s\n"
+"\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
+msgstr ""
+"\n"
+"%(author)s actualizó el ticket %(ticket_title)s.\n"
+"\n"
+"%(msg)s\n"
+"\n"
+"Ticket url: %(host)s%(ticket_url)s\n"
