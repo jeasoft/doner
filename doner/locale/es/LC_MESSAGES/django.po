@@ -272,7 +272,7 @@ msgstr ""
 #: project/templates/project/my_tickets.html:17
 #: project/templates/project/tickets.html:32
 msgid "todo"
-msgstr "ha realizar"
+msgstr "por hacer"
 
 #: project/templates/project/my_tickets.html:18
 #: project/templates/project/tickets.html:33
@@ -288,7 +288,7 @@ msgstr "Tipo"
 #: project/templates/project/project-activity.html:24
 #: project/templates/project/tickets.html:42
 msgid "Submit date"
-msgstr "Fecha de sometimiento"
+msgstr "Fecha de envío"
 
 #: project/templates/project/my_tickets.html:28
 #: project/templates/project/ticket.html:33
